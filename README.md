@@ -125,8 +125,8 @@ $ docker compose logs -f
 ### Services
 
 - **NestJS App**: Runs on port 3000
-- **MySQL**: Runs on port 3306 (configured in `.env`)
-- **Redis**: Runs on port 6379 (configured in `.env`)
+- **MySQL**: Runs on port 3306 (configured in `.env.dev`)
+- **Redis**: Runs on port 6379 (configured in `.env.dev`)
 
 ### Build Details
 

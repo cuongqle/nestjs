@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 dotenv.config({
-  path: `.env.${process.env.NODE_ENV || 'local'}`,
+  path: `.env.${process.env.NODE_ENV || 'dev'}`,
 });
 
 async function bootstrap() {
