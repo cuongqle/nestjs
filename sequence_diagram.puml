@@ -1,0 +1,32 @@
+@startuml
+actor Client
+participant UserController
+participant UserAppService
+participant UserService
+participant UserRepository
+participant UserCacheRepository
+participant RedisService
+participant MySQL
+
+Client -> UserController: POST /users {id1, id2}
+UserController -> UserAppService: getUserByIds(id1, id2)
+UserAppService -> UserCacheRepository: get(id1, id2)
+alt cache hit
+    UserCacheRepository --> UserAppService: cachedUserId
+else cache miss
+    UserAppService -> UserService: findByIds(id1, id2)
+    UserService -> UserRepository: findByIds(id1, id2)
+    alt user exists
+        UserRepository --> UserService: user
+    else create user
+        UserService -> UserRepository: save(user)
+        UserRepository --> UserService: savedUser
+    end
+    UserService --> UserAppService: userId
+    UserAppService -> UserCacheRepository: set(id1, id2, userId)
+    UserCacheRepository -> RedisService: set(key, userId)
+    RedisService --> UserCacheRepository: OK
+end
+UserAppService --> UserController: {userId}
+UserController --> Client: {userId}
+@enduml
