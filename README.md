@@ -83,18 +83,6 @@ The project includes comprehensive unit tests for all core services and reposito
 
 **Current Results**: 5 passed, 12 tests, 0 failures
 
-## API Usage
-
-Once the application is running, you can trigger the user API endpoint:
-
-```bash
-curl -X POST http://localhost:3000/users \
-  -H "Content-Type: application/json" \
-  -d '{"id1":"1","id2":"2"}'
-```
-
-This will fetch or create users with IDs "1" and "2", utilizing the caching layer for performance optimization.
-
 ## Docker Setup
 
 The project includes Docker support for containerized deployment. All services (NestJS app, MySQL, Redis) are orchestrated via Docker Compose.
@@ -147,6 +135,18 @@ $ docker compose logs -f
 - Multi-stage Dockerfile: builder stage compiles TypeScript, runtime stage runs optimized Node image
 - Base image: `node:20-alpine` (lightweight, production-ready)
 - Dev dependencies excluded in production build
+
+## API Usage
+
+Once the application is running, you can trigger the user API endpoint:
+
+```bash
+curl -X POST http://localhost:3000/users \
+  -H "Content-Type: application/json" \
+  -d '{"id1":"1","id2":"2"}'
+```
+
+This will fetch or create users with IDs "1" and "2", utilizing the caching layer for performance optimization.
 
 ## License
 
