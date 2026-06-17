@@ -42,6 +42,8 @@ $ npm install
 
 ## Compile and run the project
 
+First, create a `.env.dev` file with your configuration (see `.env.example` for reference).
+
 ```bash
 # development
 $ npm run start
@@ -125,8 +127,8 @@ $ docker compose logs -f
 ### Services
 
 - **NestJS App**: Runs on port 3000
-- **MySQL**: Runs on port 3306 (configured in `.env.dev`)
-- **Redis**: Runs on port 6379 (configured in `.env.dev`)
+- **MySQL**: Runs on port 3306 (configured in `.env.docker`)
+- **Redis**: Runs on port 6379 (configured in `.env.docker`)
 
 ### Build Details
 
